@@ -1,4 +1,4 @@
-"# VueCourse" 
+<h1>Vuejs Course layout</h1>
 <ol>
 <li>JavaScript Quick review</li>
 <li>Conditional rendering  v-if , v-else and  v-show</li>
