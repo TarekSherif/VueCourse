@@ -1,13 +1,13 @@
 "# VueCourse" 
-
-1-JavaScript Quick review
-2-v-if , v-else and  v-show
-3-v-for
-4-click events
-5-input binding v-model
-6-forms , Textarea , checkbox ,radio buttons
-7-computed properties vs watch
-8-components ?
-9-components  bootstrap cart
-10-project
-
+<ol>
+<li>JavaScript Quick review</li>
+<li>v-if , v-else and  v-show</li>
+<li>v-for</li>
+<li>click events</li>
+<li>input binding v-model</li>
+<li>forms , Textarea , checkbox ,radio buttons</li>
+<li>computed properties vs watch</li>
+<li>components ?</li>
+<li>components  bootstrap cart</li>
+<li>project</li>
+</ol>
