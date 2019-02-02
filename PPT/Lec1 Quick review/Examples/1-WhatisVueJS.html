@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhatisVueJS</title>
+	<meta charset="utf-8" />
+   
+</head>
+<body>
+    <h1>WhatisVueJS</h1>
+
+    <div id="app" >
+            <table>
+                    <tr>
+                        <th>Arithmetic Operators </th>
+                        <th>+,-,*,/,% </th>
+                        <td>10 + 5= {{ 10 + 5 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Relational Operators </th>
+                            <th>＜,＜=,＞,=＞,==,!=</th>
+                            <td>1=2 = {{ 1==2 }}</td>
+                     </tr>
+                     <tr>
+                            <th>Logical Operators </th>
+                                <th>&,|</th>
+                                <td>true & falue = {{ 1 & 0 }}</td>
+                   </tr>
+                   <tr>
+                        <th> Conditional Operator </th>
+                            <th>true ? 'YES' : 'NO'  = </th>
+                            <td>  {{ (1) ? 'YES' : 'NO'}}</td>
+               </tr>
+                  
+                   <tr>
+                        <th>Json Object </th>
+                            <th> {name:"Tarek",Age:30}.name</th>
+                            <td>{{ {name:"Tarek",Age:30}.name }}</td>
+               </tr>
+               <tr>
+                    <th>Element Of Array </th>
+                        <th>  ["Tarek","Mohamed","Sherif"][2]</th>
+                        <td>{{ ["Tarek","Mohamed","Sherif"][2] }}</td>
+              </tr>
+             </table>
+    
+      
+        <!-- <p>{{ * once }}</p> -->
+            
+        <!-- <p>{{ * once }}</p>
+        
+        {{ text }} {{ }} {{{ html }}} 
+  -->
+
+    </div>
+    <div >
+        <p>10 + 10= {{ 10 + 10  }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+             });
+    </script>  
+</body>
+</html>
