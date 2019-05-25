@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2-OneWaydatabindings</title>
+	<meta charset="utf-8" />
+   
+</head>
+<body>
+    <h1>2-OneWaydatabindings</h1>
+
+    <div id="app" >
+        <div >
+            Eno:    {{Emp.Eno}}
+        </div>
+        <div>
+            Ename:   {{Emp.Ename}}
+        </div>
+        <div >
+            Sal:    {{Emp.Sal}}
+        </div>
+        <div>
+            age: {{Emp.age}}
+        </div>
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                Emp:{
+                    Eno:1,
+                    Ename:"Tarek Sherif",
+                    Sal:5000,
+                    age:10
+                    }
+            }
+             });
+    </script>  
+    {# شروط الربط 
+    1-
+    يكون داخل نطاق 
+    App
+    2- يكون متعرف داخل 
+    data #}
+</body>
+</html>
+
+
+ 

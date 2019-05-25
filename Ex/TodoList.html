@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        To do List
+    </title>
+    <style>
+        .Project-Title {
+            color: rgba(255, 5, 5, .5)
+        }
+
+        .close {
+            color: white;
+            background-color: red;
+            border-radius: 50%;
+
+        }
+
+        .Completed {
+            color: gray;
+            text-decoration-line: line-through;
+        }
+
+
+        .filter-Selected {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App">
+        <h1 class="Project-Title">
+            To do List
+        </h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <input type="checkbox" v-model="SetAll">
+                    </td>
+                    <td colspan="3">
+                        <input type="text" v-model="NewItem.title" v-on:keyup.enter="AddToList()" autocomplete="off"
+                            placeholder="What needs to be done?">
+                    </td>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in TodoListfilter()">
+                    <td>
+                        <input type="checkbox" v-model="item.completed">
+
+                    </td>
+                    <td colspan="2">
+                        <span :class="{Completed:item.completed}">
+                            {{item.title}}
+                        </span>
+
+                    </td>
+                    <td>
+                        <span class="close" @click="RemoveItem(index)"> X </span>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>
+                        <span @click="visibility='All'" :class="{'filter-Selected':visibility=='All'}">
+                            All
+                        </span>
+                    </td>
+                    <td>
+                        <span @click="visibility='Active'" :class="{'filter-Selected':visibility=='Active'}">
+                            Active
+                        </span>
+                    </td>
+                    <td>
+                        <span @click="visibility='Completed'" :class="{'filter-Selected':visibility=='Completed'}">
+                            Completed
+                        </span>
+                    </td>
+                    <td>
+                        <span>
+                            Clear completed
+                        </span>
+                    </td>
+
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+
+            data: {
+                SetAll: false,
+                visibility: "All",
+                NewItem: { title: "", completed: false },
+
+                TodoList: [
+                    { title: "Test 1", completed: true },
+                    { title: "Test 1", completed: false },
+
+                ]
+            }, watch: {
+                SetAll: function () {
+                    if (this.SetAll)
+                        this.TodoListfilter().forEach(element => {
+                            element.completed = true;
+                        });
+                    else
+                        this.TodoListfilter().forEach(element => {
+                            element.completed = false;
+                        });
+                }
+            },
+            methods: {
+                AddToList: function () {
+                    this.TodoList.push(this.NewItem);
+                    this.NewItem = { title: "", completed: false };
+                },
+                RemoveItem: function (itemIndex) {
+                    var Check = confirm("Are You Wont To Remove This Item");
+                    if (Check) {
+                        this.TodoList.splice(itemIndex, 1);
+                    }
+
+                },
+                TodoListfilter: function () {
+                    // var app = this;
+                    if (this.visibility == "All") {
+                        return this.TodoList;
+                    } else if (this.visibility == "Active") {
+                        return this.TodoList.filter(function (item) {
+                            return item.completed == false;
+                        })
+                    } else {
+                        return this.TodoList.filter(function (item) {
+                            return item.completed == true;
+                        })
+                    }
+
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
+
+
+<!-- https://jsfiddle.net/goarabgo/L96huL4x/ -->

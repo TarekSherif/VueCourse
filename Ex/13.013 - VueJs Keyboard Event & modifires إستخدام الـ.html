@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>13.013 - VueJs Keyboard Event & modifires إستخدام الـ</title>
+</head>
+<div id="app">
+  <h2>All Keys</h2>
+  <input type="text" v-on:keyup="handleKey">
+  <hr>
+  <h2>Enter Keys only</h2>
+  <input type="text" v-on:keyup.enter="handleKey">
+  <hr>
+</div>
+
+<body>
+  <script src="Vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {
+        handleKey: function (event) {
+          console.log(event);
+
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        27.32 - VueJs Looping with v-for
+    </title>
+    <style>
+        .Link {
+            color: blue;
+        }
+
+        .Like {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App">
+        <h2>Loop For Array</h2>
+        <div v-for="l in list">{{l}}</div>
+        <input type="button" value="ChangeList" @click="ChangeList">
+        <input type="button" value="Change element 2" @click="ChangeElement2">
+        <input type="button" value="Change element 2 in  View" @click="ChangeElement2View">
+
+        <hr>
+        <h2>Loop For object</h2>
+        <div v-for="(e,key,index) in emp">
+            #{{index+1}} - {{key}}:{{e}}
+        </div>
+        <hr>
+        <h2>Look For Array of object</h2>
+        <table>
+            <tr v-for="l in languages">
+                <td>{{l.name}}</td>
+                <td>
+                    <div class="Link" :class="{'Like':l.liked}" @click="click_like(l)">{{l.Likes}} Likes</div>
+                </td>
+            </tr>
+        </table>
+
+
+        <hr>
+        <h2>Look For Array of object And CRUD</h2>
+        <table>
+            <tr>
+                <td>
+                    <input type="text" v-model="emp.name">
+                </td>
+                <td>
+                    <input type="date" v-model="emp.Bdate">
+                </td>
+                <td>
+                    <input type="checkbox" v-model="emp.Selected">
+                    <input type="button" value="AddEmp" @click="AddEmp">
+                </td>
+            </tr>
+
+            <tr v-for="(l,index) in employees">
+                <td>
+                    <input type="text" v-model="l.name">
+                </td>
+                <td>
+                    <input type="date" v-model="l.Bdate">
+                </td>
+                <td>
+                    <input type="checkbox" v-model="l.Selected">
+                    <input type="button" value="RemoveEmp" @click="RemoveEmp(index)">
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Nested Loop</h2>
+        <table>
+            <tr v-for="iemp in employees" v-if="iemp.Selected==true">
+                <td v-for="(item,key) in iemp">
+                    {{item}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: {
+                list: [1, 2, 3, 4, 5,],
+                languages: [
+                    { name: "VB.net", Likes: 2, liked: false },
+                    { name: "C#", Likes: 2, liked: false },
+                    { name: "PHP", Likes: 6, liked: true },
+                    { name: "Python", Likes: 2, liked: false },
+                    { name: "JavaScript", Likes: 10, liked: true },
+                ],
+                employees: [
+                    { name: "Tarek", Bdate: 20, Selected: false },
+                    { name: "Sherif", Bdate: 2, Selected: false },
+                    { name: "Mohamed", Bdate: 6, Selected: true },
+                    { name: "Ali", Bdate: 2, Selected: false },
+                    { name: "Tamer", Bdate: 10, Selected: true },
+                ],
+                emp: {
+                    name: "", Bdate: 0, Selected: false
+                }
+            }, methods: {
+                AddEmp: function () {
+                    this.employees.push(this.emp);
+                    this.emp = "";
+                },
+                RemoveEmp: function (index) {
+                    this.employees.splice(index, 1);
+                },
+                ChangeElement2: function () {
+                    this.list[1] = "Element 2 Changed"
+                },
+                ChangeElement2View: function () {
+                    Vue.set(this.list, 1, "Element 2 Changed")
+                },
+                ChangeList: function () {
+                    this.list = [5, 4, 3, 2, 1];
+                },
+                click_like: function (lang) {
+
+                    if (lang.liked) {
+                        lang.Likes--;
+                    } else {
+                        lang.Likes++;
+                    }
+
+                    lang.liked = !lang.liked;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

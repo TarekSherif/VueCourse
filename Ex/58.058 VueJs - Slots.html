@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        58.058 VueJs - Slots
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <component-one-slot>
+            <h2>test</h2>
+        </component-one-slot>
+        <component-one-slot></component-one-slot>
+
+        <component-more-slot>
+
+            <div slot="header"> coustom header</div>
+
+            main
+            <div slot="footer">coustom footer</div>
+        </component-more-slot>
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+        Vue.component("ComponentOneSlot", {
+            template: `
+            <div>
+            test
+                <slot>Default slot text</slot>
+            </div>`,
+
+
+        })
+
+        Vue.component("ComponentMoreSlot", {
+            template: `
+            <div>
+                    <header> <slot name="header">Default slot header</slot> </header>
+                    <main> <slot><slot> </main>
+                    <footer><slot name="footer">Default slot footer</slot> </footer>
+               
+            </div>`,
+
+
+        })
+        new Vue({
+            el: "#App",
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

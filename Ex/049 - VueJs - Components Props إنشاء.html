@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        049 - VueJs - Components Props إنشاء
+    </title>
+
+    <style>
+        .Link {
+            color: blue;
+        }
+
+        .Like {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="App">
+        <test-prop title="asdasd" price="100" contral-desc="asasdasdasdasdasdsadasd"></test-prop>
+
+        <br>
+        <hr>
+        <language name="test1" liked="true" Likes="100"></language>
+        <language name="test2" liked="true"></language>
+
+        <language v-for="lang in languages" :name="lang.name" :liked="lang.liked" :Likes="lang.Likes"></language>
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        Vue.component("testProp", {
+            template: `<div>
+            <h2>{{title}}</h2>
+            <div>{{contralDesc}} ,{{price}} </div>
+            </div>`,
+            props: ["title", "price", "contralDesc"]
+        })
+
+
+        Vue.component("language", {
+            template: `
+            <div>
+                <span>{{name}}</span>
+                <span class="Link" :class="{'Like':liked}" @click="click_like()">{{Likes}} Likes</span>
+            </div>
+            `,
+            props: ["name", "liked", "Likes"],
+            methods: {
+                click_like: function () {
+
+                    if (this.liked) {
+                        this.Likes--;
+                    } else {
+                        this.Likes++;
+                    }
+
+                    this.liked = !this.liked;
+                }
+            }
+        })
+
+        new Vue({
+            el: "#App",
+            data: {
+                languages: [
+                    { name: "VB.net", Likes: 2, liked: false },
+                    { name: "C#", Likes: 2, liked: false },
+                    { name: "PHP", Likes: 6, liked: true },
+                    { name: "Python", Likes: 2, liked: false },
+                    { name: "JavaScript", Likes: 10, liked: true },
+                ],
+            }
+
+        })
+    </script>
+</body>
+
+</html>

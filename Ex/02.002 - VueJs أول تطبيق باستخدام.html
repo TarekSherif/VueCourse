@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>02.002 - VueJs أول تطبيق باستخدام</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="Skill in Skills">
+        {{ Skill }}
+        <button @click="removeSkill(Skill)">remove</button>
+      </li>
+    </ul>
+    <input type="text" v-model="model.addSkill" />
+    <button @click="addSkill(Skill)" :disabled="model.addSkill.length==0?true:false">
+      Add
+    </button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/Vue/dist/Vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        Skills: ["HTML", "CSS", "JS", "PHP"],
+        model: { addSkill: "" }
+      },
+      methods: {
+        removeSkill: function (Skill) {
+          var index = this.Skills.indexOf(Skill);
+          this.Skills.splice(index, 1);
+        },
+        addSkill: function () {
+          this.Skills.push(this.model.addSkill);
+          this.model.addSkill = "";
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

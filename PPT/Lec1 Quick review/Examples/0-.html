@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>
+      01.Learn Vue.js for Beginners [Part 1]
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-bind:title="message">
+        {{ message }}
+      </h1>
+      <h3 :title="message">
+        {{ name }}
+      </h3>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "Hello",
+          name: "Tarek"
+        }
+      });
+    </script>
+  </body>
+</html>

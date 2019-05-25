@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        048 - VueJs - Template Parsing Caveats in Components
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <table>
+            <myrow></myrow>
+        </table>
+        <hr>
+        <table>
+            <tr is="myrow"></tr>
+        </table>
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+        Vue.component("myrow", {
+            template: "<div>myrow</div>",
+
+        })
+        new Vue({
+            el: "#App"
+        })
+    </script>
+</body>
+
+</html>

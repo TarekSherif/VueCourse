@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ListRendering</title>
+	<meta charset="utf-8" />
+   
+</head>
+<body>
+    <h1>ListRendering</h1>
+
+    <div id="app">
+
+          <table>
+              <caption> Show Employess Data</caption>
+              <thead>
+                    <tr>
+                            <th>Eno</th>
+                            <th>Ename</th>
+                            <th>Net Sal</th>
+                    </tr>
+              </thead>
+             <tbody>
+                    <tr v-for="emp in emps" v-if="emp.Sal>=2000">
+                            <td>{{emp.Eno}}</td>
+                            <td>{{emp.Ename}}</td>
+                            <td>{{ShowData(emp)}}</td>
+                            
+                     </tr>
+             </tbody>
+              
+          </table>
+          <input type="button" value="Show" @click="ShowData()">
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+              emps:[
+                  {
+                    Eno: 1,
+                    Ename: "Tarek Sherif",
+                    Sal: 5000,
+                  Tax:500
+                    },
+                    {
+                    Eno: 2,
+                    Ename: "Tarek Mohamed",
+                    Sal: 3000,
+                  Tax:300
+                    },
+                    {
+                    Eno: 3,
+                    Ename: "Sherif Mohamed",
+                    Sal: 1000,
+                    Tax:100
+                    },
+              ]
+            },
+            methods:{
+                "ShowData":()=> alert(""),
+                "NetSal":(emp) => emp.Sal-emp.Tax,
+            }
+             });
+    </script>  
+</body>
+</html>
+
+
+ 

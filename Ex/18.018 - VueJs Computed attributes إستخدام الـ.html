@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+
+        18.018 - VueJs Computed attributes إستخدام الـ
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <h2>{{F_Name+ ' ' +L_Name}}</h2>
+        <h2>{{Full_Name}}</h2>
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+        var App = new Vue({
+            el: "#App",
+            data: {
+                F_Name: "Tarek",
+                L_Name: "Sherif"
+            },
+            computed: {
+                Full_Name: function () {
+                    return this.F_Name + ' ' + this.L_Name;
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

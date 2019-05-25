@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        24.024 VueJs - v-if الجمل الشرطية
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <h2 v-if="Active">Active</h2>
+        <h2 v-else="! Active">Not Active</h2>
+        <input type="button" value="Toggle" @click="Active=!Active">
+
+
+        <hr>
+        <input type="text" v-model="Degree">
+        <span v-if="A">A</span>
+        <span v-else-if="B">B</span>
+        <span v-else-if="C">C</span>
+        <span v-else="F">F</span>
+        <span></span>
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: { Active: true, Degree: 0 },
+            computed: {
+                A: function () {
+                    return this.Degree >= 95;
+                },
+                B: function () {
+                    return this.Degree >= 85;
+                },
+                C: function () {
+                    return this.Degree >= 75;
+                }, F: function () {
+                    return this.Degree < 75;
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>

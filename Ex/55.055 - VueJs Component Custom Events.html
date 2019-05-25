@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+
+        54.054 - VueJs create button-counter component
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <h2>{{AllprassCount}}</h2>
+        <button-counter v-on:incremet="AllprassCount++" value="3"></button-counter>
+        <button-counter v-on:incremet="AllprassCount++"></button-counter>
+
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        Vue.component("buttonCounter", {
+            template: `<button @click="incrementCounter()">{{counter}}</button>`,
+            data: function () {
+                return {
+                    counter: this.value
+                }
+            },
+            props: {
+                value: {
+                    default: 0
+                }
+            },
+            methods: {
+                incrementCounter: function () {
+                    this.counter++;
+                    this.$emit("incremet");
+                }
+            }
+        })
+        new Vue({
+            el: "#App",
+            data: {
+                AllprassCount: 0
+            }
+        })
+    </script>
+</body>
+
+</html>

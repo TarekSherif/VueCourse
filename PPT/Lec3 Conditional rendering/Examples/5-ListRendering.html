@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ListRendering</title>
+	<meta charset="utf-8" />
+   
+</head>
+<body>
+    <h1>ListRendering</h1>
+
+    <div id="app">
+
+        
+
+            <table>
+                <tr>
+                    <th>Index</th>
+                    <th>CourseName</th>
+                    <th>DeptName</th>
+                    <th>PreRequisite</th>
+                </tr>
+                <tr>
+                    <th>  <input v-model="Course.CName"></th>
+                    <th>
+                     <select v-model="Course.DName">
+                            <option disabled value="">Type of Course</option>
+                            <option v-for="Dept in Depts" >
+                                {{ Dept }}
+                            </option>
+                       </select>
+                    </th>
+                    <th>
+                            <select multiple v-model="Course.DName">
+                                <option  v-for="CourseType in CourseTypes" :key="CourseType.CName" >
+                                    {{ CourseType.CName }}
+                                </option>
+                            </select>
+                    </th>
+                </tr>
+                <tr v-for="CourseType,index in CourseTypes" :key="CourseType.CName" >
+                        <td>{{ index+1 }}</td>
+                    <td>{{ CourseType.CName }}</td>
+                    <td>{{ CourseType.DName }}</td>
+                    <td>
+                        <span  v-for="PreRequisite in CourseType.PreRequisite"  >
+                            {{PreRequisite}},
+                        </span>
+                    </td>
+                </tr>
+            </table>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                Course:{},
+                selected:"",
+                Depts:["Web application","Mobile application","windows application"],
+                CourseTypes:[
+                    {CName:"HTML",DName:"Web application",PreRequisite:[]},
+                    {CName:"CSS",DName:"Web application",PreRequisite:["HTML"]},
+                    {CName:"Javascript",DName:"Web application",PreRequisite:["HTML","CSS"]},
+                    {CName:"VueJs",DName:"Web application",PreRequisite:["HTML","CSS","Javascript"]},
+
+                    {CName:"PHP",DName:"Web application",PreRequisite:["HTML"]},
+                    {CName:"MYSQL",DName:"Web application",PreRequisite:[ "MYSQL"]},
+                    {CName:"Laravel",DName:"Web application",PreRequisite:["HTML","PHP","MYSQL"]},
+
+                 
+                ]
+            }
+             });
+    </script>  
+</body>
+</html>
+
+
+ 

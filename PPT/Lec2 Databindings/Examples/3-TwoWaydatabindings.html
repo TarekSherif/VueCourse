@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3-TwoWaydatabindings</title>
+	<meta charset="utf-8" />
+   
+</head>
+<body>
+    <h1>3-TwoWaydatabindings</h1>
+
+    <div id="app">
+
+            Course Type :
+            <select v-model="selected">
+                <option disabled value="">Type of Course</option>
+                <option>Web application</option>
+                <option>Mobile application</option>
+                <option>windows application</option>
+            </select>
+            <div>Course Type chosen: {{ selected }}</div>
+
+            <br>
+            <hr>
+            
+            Course Name : 
+            <input v-model="CName">
+            <p>{{ CName }}</p>
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                CName:"Vue.JS",
+                selected:""
+
+            }
+             });
+    </script>  
+</body>
+</html>
+
+
+ 

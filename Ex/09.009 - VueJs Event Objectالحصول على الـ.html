@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>09.009 - VueJs Event Objectالحصول على الـ</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="showMsg('click',$event)">Click</button><br />
+    <div>
+      <h5>X:{{ x }}</h5>
+      <h5>Y:{{ y }}</h5>
+      <h5>Type:{{ type }}</h5>
+    </div>
+  </div>
+
+  <script src="Vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: { x: 0, y: 0, type: "" },
+      methods: {
+        showMsg: function (msg, event) {
+          this.x = event.clientX;
+          this.y = event.clientY;
+          this.type = event.type;
+          console.log(event);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

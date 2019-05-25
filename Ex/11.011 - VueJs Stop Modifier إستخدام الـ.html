@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>12.012 - VueJs Self, capture & once modifires إستخدام الـ</title>
+</head>
+
+<body>
+  <div id="app">
+    <table>
+      <tr>
+        <th>Normal</th>
+        <th>Capture</th>
+        <th>stop</th>
+        <th>self</th>
+        <th>once</th>
+      </tr>
+      <tr>
+        <td>
+          <div v-on:mouseover="rec1" style="background-color: blue;width:200px;height: 200px;">
+            <div v-on:mouseover="rec2" style="background-color: red;width:100px;height:100px;"></div>
+          </div>
+        </td>
+        <td>
+          <div v-on:mouseover.capture="rec1" style="background-color: blue;width:200px;height: 200px;">
+            <div v-on:mouseover="rec2" style="background-color: red;width:100px;height:100px;"></div>
+          </div>
+        </td>
+        <td>
+          <div v-on:mouseover="rec1" style="background-color: blue;width:200px;height: 200px;">
+            <!-- event.stopPropagation() -->
+            <div v-on:mouseover.stop="rec2" style="background-color: red;width:100px;height:100px;"></div>
+          </div>
+        </td>
+        <td>
+          <div v-on:mouseover.self="rec1" style="background-color: blue;width:200px;height: 200px;">
+            <div v-on:mouseover="rec2" style="background-color: red;width:100px;height:100px;"></div>
+          </div>
+        </td>
+        <td>
+          <div v-on:mouseover.once="rec1" style="background-color: blue;width:200px;height: 200px;">
+            <div v-on:mouseover="rec2" style="background-color: red;width:100px;height:100px;"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script src="Vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {
+        rec1: function (event) {
+          console.log("rec1");
+        },
+        rec2: function (event) {
+          console.log("rec2");
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

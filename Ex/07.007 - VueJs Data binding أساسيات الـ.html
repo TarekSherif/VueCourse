@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>07.007 - VueJs Data binding أساسيات الـ</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{ HTMLbinding }}</div>
+    <div v-html="HTMLbinding"></div>
+    <div>
+      <h1>{{ getLength() }}</h1>
+    </div>
+
+    <input type="text" v-bind:disabled="Propertybinding" />
+    <input type="text" :disabled="Propertybinding" />
+  </div>
+  <script src="Vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        HTMLbinding: "<h1>Test</h1>",
+        Propertybinding: true
+      },
+      methods: {
+        getLength: function () {
+          return this.HTMLbinding.length;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

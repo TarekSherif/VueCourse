@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        20.020 - VueJs Class Binding إستخدام
+    </title>
+    <style>
+        .rec {
+            width: 100px;
+            height: 100px;
+        }
+
+        .Is-Bold {
+            font-weight: bold
+        }
+
+        .Is-red {
+            background-color: red
+        }
+
+        .Is-italic {
+            font-style: italic
+        }
+    </style>
+</head>
+<div id="App">
+    <div>
+        <input type="button" value="B" @click='Bold' :class='classes'>
+        <input type="button" value="i" @click="italic" :class='classes'>
+        <input type="color" value="Color" v-model='styles["background-color"]'>
+    </div>
+    <div class="rec" :class="classes" :style="styles">
+        Test
+    </div>
+
+</div>
+
+<body>
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: {
+                classes: {
+                    "Is-Bold": true,
+                    "Is-italic": true,
+                },
+                styles: {
+                    "background-color": "red",
+                }
+            }, methods: {
+                'Bold': function () {
+                    this.classes["Is-Bold"] = !this.classes["Is-Bold"];
+                },
+                'italic': function () {
+                    this.classes["Is-italic"] = !this.classes["Is-italic"];
+                },
+
+
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>

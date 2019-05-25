@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+
+        34.034 - VueJs فلترة النتائج مع v-for Classes
+    </title>
+    <style>
+        .error {
+            border: solid 1px red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App">
+        <h2> filter</h2>
+        <table>
+            <tr>
+                <th v-for="(item,key) in emp">
+                    {{key}}
+                </th>
+
+            </tr>
+            <tr>
+
+                <th v-for="(item,key) in emp">
+                    <input type="text" v-model="emp[key]">
+                </th>
+            </tr>
+
+            <tr v-for="iemp in SearchEmployees()">
+                <td v-for="(item,key) in iemp">
+                    {{item}}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: {
+                emp: {
+                    name: "", Bdate: "", Selected: false
+                },
+                employees: [
+                    { name: "Tarek", Bdate: 20, Selected: false },
+                    { name: "Sherif", Bdate: 2, Selected: false },
+                    { name: "Mohamed", Bdate: 6, Selected: true },
+                    { name: "Ali", Bdate: 2, Selected: false },
+                    { name: "Tamer", Bdate: 10, Selected: true },
+                ],
+
+            }, methods: {
+                SearchEmployees: function () {
+                    var app = this;
+                    return this.employees.filter(function (Emp) {
+                        return Emp.name.indexOf(app.emp.name) !== -1 && String(Emp.Bdate).indexOf(String(app.emp.Bdate)) !== -1;
+                    });
+                }
+            },
+            computed: {
+                computedOddnumbers: function () {
+                    return this.numbers.filter(function (num) {
+                        return num % 2 != 0;
+                    });
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

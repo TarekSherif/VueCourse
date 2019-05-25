@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>06.006 - VueJs في Template كيف يعمل الـ</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="app2">{{ title }}</div>
+  <script src="https://cdn.jsdelivr.net/npm/Vue/dist/Vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      template: "<div>{{title}}</div>",
+      // template must have Root Elemant
+      // {{title}}    Error
+      //template: "<div>{{title}}</div><div>{{title}}</div>",  Error
+      data: {
+        title: "app1"
+      },
+      methods: {}
+    });
+    var vm = new Vue({
+      el: "#app2",
+      data: {
+        title: "app2"
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

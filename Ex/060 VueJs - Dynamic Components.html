@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        060 VueJs - Dynamic Components
+    </title>
+</head>
+
+<body>
+
+    <div id="App">
+        <first-component></first-component>
+        <hr>
+        <component is="second-component"></component>
+        <hr>
+
+        <button @click="ChangeComponent()"> ChangeComponent</button>
+
+        <component :is="ActiveComponent"></component>
+        <hr>
+
+
+
+        <keep-alive>
+            <component :is="ActiveComponent"></component>
+        </keep-alive>
+        <hr>
+    </div>
+
+    <script src="Vue.js"></script>
+    <script>
+
+        Vue.component("first-component", {
+            template: `
+            <div>
+                <h2>
+                     first-component
+                     <button @click="incrementCounter()">{{counter}}</button>
+                </h2>
+               
+            </div>`,
+            data: function () {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                incrementCounter: function () {
+                    this.counter++;
+                }
+            }
+        })
+
+        Vue.component("second-component", {
+            template: `<div><h2>second-component</h2></div>`
+        })
+        new Vue({
+            el: "#App",
+            data: {
+                ActiveComponent: "first-component"
+            },
+            methods: {
+                ChangeComponent: function () {
+                    this.ActiveComponent = (this.ActiveComponent == "first-component" ? "second-component" : "first-component")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

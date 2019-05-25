@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        25.025 - VueJs Groupin v-if with tempalte tag تجميع الجمل الشرطية
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <input type="checkbox" v-model="Active">
+        <div v-if="Active">div1</div>
+        <div v-if="Active">div2</div>
+        <div v-if="Active">div3</div>
+        <hr>
+        <div v-if="Active">
+            <div>div1</div>
+            <div>div2</div>
+            <div>div3</div>
+        </div>
+        <hr>
+        <tempalte v-if="Active">
+            <div>div1</div>
+            <div>div2</div>
+            <div>div3</div>
+        </tempalte>
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: {
+                Active: true
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css\font-awesome.min.css">
+
+    <title> star</title>
+    <style>
+        .Star {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App">
+        <span v-for="n in Number(rate)" class="fa fa-star"></span><span v-for="n in 5-Number(rate)"
+            class="fa fa-star-o"></span>
+        <input type="text" v-model="rate">
+
+        <hr>
+
+        <span v-for="n in Number(rate)" class="fa fa-star Star" @click="vote(n)"></span><span
+            v-for="n in 5-Number(rate)" class="fa  fa-star-o Star" @click="vote( Number(rate)+n)"></span>
+    </div>
+    <!-- <span class="fa fa-star" v-for=""></span> -->
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: {
+                rate: 4
+            }, methods: {
+                vote: function (val) {
+                    this.rate = val;
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

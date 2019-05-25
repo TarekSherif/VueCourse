@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ListRendering</title>
+	<meta charset="utf-8" />
+   
+</head>
+<body>
+    <h1>ListRendering</h1>
+
+    <div id="app">
+
+            Course Type :
+            <select v-model="selected">
+                <option disabled value="">Type of Course</option>
+                <option v-for="CourseType in CourseTypes" >
+                    {{ CourseType }}
+                </option>
+            </select>
+            <div>Course Type chosen: {{ selected }}</div>
+
+            
+            Course Name : 
+            <input v-model="CName">
+            <p>{{ CName }}</p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                CName:"Vue.JS",
+                selected:"",
+                CourseTypes:["Web application","Mobile application","windows application"]
+            }
+             });
+    </script>  
+</body>
+</html>
+
+
+ 

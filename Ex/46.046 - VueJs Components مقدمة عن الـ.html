@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+
+        46.046 - VueJs Components مقدمة عن الـ
+    </title>
+</head>
+
+<body>
+    <div id="App">
+        <Emp></Emp>
+        <Demp>Test</Demp>
+        <ol>
+            <li>
+                يكون قبل ال instans
+            </li>
+            <li>
+                يحتوي علي
+                template
+            </li>
+            <li>
+
+                اسم ال
+                component
+                حساس لحالة الحروف
+            </li>
+            <li>
+
+                اسم ال
+                component
+                لايحتوي على مسافه
+            </li>
+            <li>
+                data is function
+            </li>
+        </ol>
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        Vue.component("Emp", {
+            template: "<div>{{emp.name}}</div>",
+            data: function () {
+                return {
+                    emp: { name: "Tarek", age: 40 }
+                }
+            }
+        });
+        Vue.component("Demp", {
+            template: "<h2><slot></slot></h2>",
+
+        });
+        new Vue({
+            el: "#App",
+            data: {}
+        });
+    </script>
+</body>
+
+</html>

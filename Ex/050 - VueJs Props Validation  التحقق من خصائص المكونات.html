@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        050 - VueJs Props Validation التحقق من خصائص المكونات
+    </title>
+
+    <style>
+        .Link {
+            color: blue;
+        }
+
+        .Like {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="App">
+
+
+
+        <language name="test1" liked="true" Likes="100"></language>
+        <language name="test2" liked="true"></language>
+
+        <language v-for="lang in languages" :name="lang.name" :liked="lang.liked" :Likes="lang.Likes"></language>
+
+
+        <hr>
+        <language2 v-for="lang in languages" :language-data="lang">
+        </language2>
+
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        Vue.component("language", {
+            template: `
+            <div>
+                <span>{{name}}</span>
+                <span class="Link" :class="{'Like':liked}" @click="click_like()">{{Likes}} Likes</span>
+            </div>
+            `,
+            props: {
+
+                "name": {
+                    type: String,
+                    required: true
+                },
+                "liked": {},
+                "Likes": {
+                    type: [Number, String],
+                    default: 0,
+                    validator: function (val) {
+                        return val >= 0;
+                    }
+                }
+            },
+            methods: {
+                click_like: function () {
+
+                    if (this.liked) {
+                        this.Likes--;
+                    } else {
+                        this.Likes++;
+                    }
+
+                    this.liked = !this.liked;
+                }
+            }
+        })
+
+
+
+        Vue.component("language2", {
+            template: `
+            <div>
+                <span>{{languageData.name}}</span>
+                <span class="Link" :class="{'Like':languageData.liked}" @click="click_like()">{{languageData.Likes}} Likes</span>
+            </div>
+            `,
+            props: {
+                languageData: {
+                    "name": {
+                        type: String,
+                        required: true
+                    },
+                    "liked": {},
+                    "Likes": {
+                        type: [Number, String],
+                        default: 0,
+                        validator: function (val) {
+                            return val >= 0;
+                        }
+                    }
+                }
+            },
+            methods: {
+                click_like: function () {
+
+                    if (this.languageData.liked) {
+                        this.languageData.Likes--;
+                    } else {
+                        this.languageData.Likes++;
+                    }
+
+                    this.languageData.liked = !this.languageData.liked;
+                }
+            }
+        })
+
+
+
+        new Vue({
+            el: "#App",
+            data: {
+                languages: [
+                    { name: "VB.net", Likes: 2, liked: false },
+                    { name: "C#", Likes: 2, liked: false },
+                    { name: "PHP", Likes: 6, liked: true },
+                    { name: "Python", Likes: 2, liked: false },
+                    { name: "JavaScript", Likes: 10, liked: true },
+                ],
+            }
+
+        })
+    </script>
+</body>
+
+</html>

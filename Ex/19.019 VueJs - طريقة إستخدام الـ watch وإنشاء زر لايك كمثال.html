@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+
+        19.019 VueJs - طريقة إستخدام الـ watch وإنشاء زر لايك كمثال
+    </title>
+    <style>
+        .Like {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App">
+        <span @click="liked =! liked" :class="isLike">
+            {{LikeCounter}} Like
+        </span>
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        new Vue({
+            el: "#App",
+            data: {
+                liked: false,
+                LikeCounter: 5
+            },
+            computed: {
+                isLike: function () {
+                    return (this.liked) ? "Like" : "";
+                }
+            },
+            watch: {
+                liked: function (value) {
+                    if (this.liked)
+                        this.LikeCounter++;
+                    else
+                        this.LikeCounter--;
+                }
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>
